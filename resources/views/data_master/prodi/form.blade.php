@@ -7,7 +7,7 @@
 
         <div class="row">
             <form
-                action="{{ isset($data) ? route('tahun-ajaran.update', $data->id) : route('tahun-ajaran.store') }}"
+                action="{{ isset($data) ? route('data-master.prodi.update', $data->id) : route('data-master.prodi.store') }}"
                 method="POST">
                 @csrf
                 @if (isset($data))
@@ -16,13 +16,12 @@
                 <div class="col-xl-12">
                     <!-- HTML5 Inputs -->
                     <div class="card mb-4">
-                        <h5 class="card-header text-capitalize">{{ isset($data) ? 'Edit' : 'Tambah' }} Tahun Ajaran</h5>
+                        <h5 class="card-header text-capitalize">{{ isset($data) ? 'Edit' : 'Tambah' }} Prodi</h5>
                         <div class="card-body">
                             <div class="mb-3">
                                 <label for="nama" class="form-label">Nama</label>
                                 <input class="form-control @error('nama') is-invalid @enderror" type="text"
-                                    value="{{ isset($data) ? $data->nama : old('nama') }}" id="nama"
-                                    placeholder="contoh: Tahun Ajaran 2020" name="nama" />
+                                    value="{{ isset($data) ? $data->nama : old('nama') }}" id="nama" name="nama" />
                                 @error('nama')
                                 <div class="invalid-feedback d-block">
                                     {{ $message }}

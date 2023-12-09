@@ -5,7 +5,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\{
     RoleController,
     UserController,
-    TahunAjaranController
+    TahunAjaranController,
+    ProdiController
 };
 
 /*
@@ -20,7 +21,7 @@ use App\Http\Controllers\{
 */
 
 Route::get('/', function () {
-    return view('tamu');
+    return redirect()->route('login');
 })->name('index');
 
 Route::group(['middleware' => ['auth']], function() {
@@ -38,8 +39,15 @@ Route::group(['middleware' => ['auth']], function() {
         Route::delete('{role}/{id}', [UserController::class, 'destroy'])->name('destroy');
     });
 
-    Route::get('tahun-ajaran/data', [TahunAjaranController::class, 'data'])->name('tahun-ajaran.data');
-    Route::resource('tahun-ajaran', TahunAjaranController::class);
+    Route::prefix('data-master')->name('data-master.')->group(function () {
+        //? Tahun ajaran
+        Route::get('tahun-ajaran/data', [TahunAjaranController::class, 'data'])->name('tahun-ajaran.data');
+        Route::resource('tahun-ajaran', TahunAjaranController::class);
+        
+        //? Prodi
+        Route::get('prodi/data', [ProdiController::class, 'data'])->name('prodi.data');
+        Route::resource('prodi', ProdiController::class);
+    });
 });
 
 require __DIR__.'/auth.php';

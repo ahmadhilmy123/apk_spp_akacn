@@ -21,7 +21,7 @@
         </li>
 
         @can('view_tahun_ajaran')
-        <li class="menu-item {{ Request::is('tahun-ajaran*') ? 'active' : '' }}">
+        <li class="menu-item {{ Request::is('data-master*') ? 'active' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
                 <i class="menu-icon tf-icons bx bx-user"></i>
                 <div data-i18n="Layouts">Data Master</div>
@@ -29,8 +29,13 @@
     
             <ul class="menu-sub">
                 <li class="menu-item">
-                    <a href="{{ route('tahun-ajaran.index') }}" class="menu-link">
+                    <a href="{{ route('data-master.tahun-ajaran.index') }}" class="menu-link">
                         <div data-i18n="Tahun Ajaran" class="text-capitalize">Tahun Ajaran</div>
+                    </a>
+                </li>
+                <li class="menu-item">
+                    <a href="{{ route('data-master.prodi.index') }}" class="menu-link">
+                        <div data-i18n="Prodi" class="text-capitalize">Prodi</div>
                     </a>
                 </li>
             </ul>

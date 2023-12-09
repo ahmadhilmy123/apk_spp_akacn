@@ -19,7 +19,7 @@ class ProdiController extends Controller
         foreach ($datas as $data) {
                 $options = '';
 
-                $options = $options ."<a href='". route('data-master.prodi.show', $data->id) ."' class='btn btn-info mx-2'>Detail</a>";
+                $options = $options ."<a href='". route('data-master.prodi.show', $data->id) ."' class='btn btn-info mx-2'>Set Semester</a>";
 
                 if (auth()->user()->can('edit_prodi')) {
                     $options = $options ."<a href='". route('data-master.prodi.edit', $data->id) ."' class='btn btn-warning mx-2'>Edit</a>";
@@ -54,7 +54,7 @@ class ProdiController extends Controller
 
     public function show(Prodi $prodi)
     {
-        //
+        return view('data_master.prodi.show', compact('prodi'));
     }
 
     public function edit($id)

@@ -16,20 +16,14 @@
         <div class="container-xxl flex-grow-1 container-p-y">
 
             <div class="card">
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-md-10">
-                            <h5 class="card-header">Roles</h5>
-                        </div>
-                        <div class="col-md-2 d-flex justify-center align-items-center">
-                            @can('add_roles')
-                                <button type="button" class="btn btn-primary tombol-buat-user" data-bs-toggle="modal"
-                                    data-bs-target="#exampleModal">
-                                    Create Role
-                                </button>
-                            @endcan
-                        </div>
-                    </div>
+                <div class="card-header d-flex justify-content-between">
+                    <h5 class="">Roles</h5>
+                    @can('add_roles')
+                        <button type="button" class="btn btn-primary tombol-buat-user" data-bs-toggle="modal"
+                            data-bs-target="#exampleModal">
+                            Tambah Role
+                        </button>
+                    @endcan
                 </div>
                 <div class="container" style="height: 65vh;overflow: auto;">
                     <div id="accordionIcon" class="accordion mt-3 accordion-without-arrow">

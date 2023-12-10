@@ -10,27 +10,10 @@ use App\Http\Controllers\Auth\VerifyEmailController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {
-    // Route::get('register', [RegisteredUserController::class, 'create'])
-    //             ->name('register')->middleware(['auth']);
-
-    // Route::post('register', [RegisteredUserController::class, 'store'])->middleware('auth');
-
     Route::get('login', [AuthenticatedSessionController::class, 'create'])
                 ->name('login');
 
     Route::post('login', [AuthenticatedSessionController::class, 'store']);
-
-    Route::get('forgot-password', [PasswordResetLinkController::class, 'create'])
-                ->name('password.request');
-
-    Route::post('forgot-password', [PasswordResetLinkController::class, 'store'])
-                ->name('password.email');
-
-    Route::get('reset-password/{token}', [NewPasswordController::class, 'create'])
-                ->name('password.reset');
-
-    Route::post('reset-password', [NewPasswordController::class, 'store'])
-                ->name('password.update');
 });
 
 Route::middleware('auth')->group(function () {
@@ -38,7 +21,7 @@ Route::middleware('auth')->group(function () {
                 ->name('password.ubah');
 
     Route::post('reset-password-login', [NewPasswordController::class, 'resetPassword'])
-                ->name('password.updateReset');
+                ->name('password.update');
 
     Route::get('verify-email', [EmailVerificationPromptController::class, '__invoke'])
                 ->name('verification.notice');

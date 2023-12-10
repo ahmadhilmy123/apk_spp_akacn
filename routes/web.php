@@ -15,7 +15,8 @@ use App\Http\Controllers\Kelola\{
 
 use App\Http\Controllers\{
     PembayaranController,
-    HomeController
+    HomeController,
+    ProfileController
 };
 
 /*
@@ -34,6 +35,11 @@ Route::get('/', function () {
 })->name('index');
 
 Route::group(['middleware' => ['auth']], function() {
+    Route::prefix('profile')->name('profile.')->group(function () {
+        Route::get('/', [ProfileController::class, 'index'])->name('index');
+        Route::patch('/', [ProfileController::class, 'update'])->name('update');
+    });
+
     Route::get('/dashboard', function(){
         return view('dashboard');
     });

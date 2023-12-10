@@ -7,25 +7,12 @@
     </div>
 
     <div class="navbar-nav-right d-flex align-items-center" id="navbar-collapse">
-        <!-- Search -->
-        <form action="/buku-tamu" method="get">
-            <div class="navbar-nav align-items-center">
-                <div class="nav-item d-flex align-items-center">
-                </div>
-            </div>
-        </form>
-        <!-- /Search -->
 
         <ul class="navbar-nav flex-row align-items-center ms-auto">
             <li class="nav-item navbar-dropdown dropdown-user dropdown">
                 <a class="nav-link dropdown-toggle hide-arrow" href="javascript:void(0);" data-bs-toggle="dropdown">
-                    <div class="avatar avatar-online">
-                        @if (Auth::user()->foto_profil == '/img/avatar-1.png')
-                            <img src="{{ Auth::user()->foto_profil }}" alt class="w-px-40 h-auto rounded-circle" />
-                        @else
-                            <img src="{{ asset('storage/' . Auth::user()->foto_profil) }}" alt
-                                class="w-px-40 rounded-circle" style="width: 100% !important;"/>
-                        @endif
+                    <div class="avatar avatar-online overflow-hidden">
+                        <img src="{{ asset(Auth::user()->profile ? ('storage/' . Auth::user()->profile) : 'image/profile.jpg') }}" alt="profile" class="w-px-40 h-auto rounded-circle" />
                     </div>
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end">
@@ -33,14 +20,9 @@
                         <a class="dropdown-item" href="#">
                             <div class="d-flex">
                                 <div class="flex-shrink-0 me-3">
-                                    <div class="avatar avatar-online">
-                                        @if (Auth::user()->foto_profil == '/img/avatar-1.png')
-                                            <img src="{{ Auth::user()->foto_profil }}" alt
-                                                class="w-px-40 h-auto rounded-circle" />
-                                        @else
-                                            <img src="{{ asset('storage/' . Auth::user()->foto_profil) }}" alt
-                                                class="w-px-40 rounded-circle" style="width: 100% !important;" />
-                                        @endif
+                                    <div class="avatar avatar-online overflow-hidden">
+                                        <img src="{{ asset(Auth::user()->profile ? ('storage/' . Auth::user()->profile) : 'image/profile.jpg') }}" alt="profile"
+                                            class="w-px-40 h-auto rounded-circle" />
                                     </div>
                                 </div>
                                 <div class="flex-grow-1">
@@ -55,9 +37,9 @@
                         <div class="dropdown-divider"></div>
                     </li>
                     <li>
-                        <a class="dropdown-item" href="/account">
+                        <a class="dropdown-item" href="{{ route('profile.index') }}">
                             <i class="bx bx-user me-2"></i>
-                            <span class="align-middle">My Profile</span>
+                            <span class="align-middle">Profile</span>
                         </a>
                     </li>
                     <li>

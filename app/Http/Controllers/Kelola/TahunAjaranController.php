@@ -1,8 +1,8 @@
 <?php
+namespace App\Http\Controllers\Kelola;
 
-namespace App\Http\Controllers;
-
-use DataTables;
+use App\Http\Controllers\Controller;
+use DataTables, DB;
 use App\Models\TahunAjaran;
 use Illuminate\Http\Request;
 
@@ -36,8 +36,8 @@ class TahunAjaranController extends Controller
                                         Hapus
                                     </button>";
 
-                $data->options = $options;
-            }
+                                }
+                                $data->options = $options;
         }
 
         return DataTables::of($datas)
@@ -73,6 +73,14 @@ class TahunAjaranController extends Controller
 
     public function destroy(TahunAjaran $tahunAjaran)
     {
-        //
+        DB::beginTransaction();
+        try {
+            $tahunAjaran->delete();
+            DB::commit();
+            return redirect()->back()->with('success', 'Berhasil disimpan');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', 'Gagal dihapus');
+        }
     }
 }

@@ -70,7 +70,7 @@
                 <div class="mb-3">
                   <label for="email" class="form-label">Email</label>
                   <input
-                    type="email"
+                    type="text"
                     class="form-control"
                     id="email"
                     name="email"
@@ -82,9 +82,6 @@
                 <div class="mb-3 form-password-toggle">
                   <div class="d-flex justify-content-between">
                     <label class="form-label" for="password">Password</label>
-                    <a href="{{ route('password.request') }}">
-                      <small>Forgot Password?</small>
-                    </a>
                   </div>
                   <div class="input-group input-group-merge">
                     <input

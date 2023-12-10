@@ -1,7 +1,7 @@
 <?php
+namespace App\Http\Controllers\Kelola;
 
-namespace App\Http\Controllers;
-
+use App\Http\Controllers\Controller;
 use DataTables, DB;
 use App\Models\{
     TahunAjaran,
@@ -29,8 +29,8 @@ class SemesterController extends Controller
                                         Hapus
                                     </button>";
 
-                $data->options = $options;
-            }
+                                }
+                                $data->options = $options;
         }
 
         return DataTables::of($datas)

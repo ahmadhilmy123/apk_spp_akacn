@@ -11,10 +11,6 @@
         <form action="/buku-tamu" method="get">
             <div class="navbar-nav align-items-center">
                 <div class="nav-item d-flex align-items-center">
-                    <button type="submit" style="background: transparent;border: none;"><i class="bx bx-search fs-4 lh-0"></i></button>
-                    <input type="text" class="form-control border-0 shadow-none"
-                        placeholder="Search Nama , Instansi" name="search"
-                        value="{{ request('search') }}" />
                 </div>
             </div>
         </form>

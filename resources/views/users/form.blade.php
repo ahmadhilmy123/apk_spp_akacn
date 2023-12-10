@@ -48,6 +48,38 @@
                                 <input class="form-control" type="text" value="000000" name="number" disabled />
                             </div>
                             @endif
+                            @if (request('role') == 'mahasiswa')
+                            <div class="mb-3">
+                                <label for="tahun_ajaran_id" class="form-label">Tahun Ajaran</label>
+                                <select class="form-select @error('tahun_ajaran_id') is-invalid @enderror"
+                                    name="tahun_ajaran_id">
+                                    <option value="">Pilih Tahun Ajaran</option>
+                                    @foreach ($tahun_ajarans as $tahun_ajaran)
+                                    <option value="{{ $tahun_ajaran->id }}">{{ $tahun_ajaran->nama }}</option>
+                                    @endforeach
+                                </select>
+                                @error('tahun_ajaran_id')
+                                <div class="invalid-feedback d-block">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                            <div class="mb-3">
+                                <label for="prodi_id" class="form-label">Prodi</label>
+                                <select class="form-select @error('prodi_id') is-invalid @enderror"
+                                    name="prodi_id">
+                                    <option value="">Pilih Prodi</option>
+                                    @foreach ($prodis as $prodi)
+                                    <option value="{{ $prodi->id }}">{{ $prodi->nama }}</option>
+                                    @endforeach
+                                </select>
+                                @error('prodi_id')
+                                <div class="invalid-feedback d-block">
+                                    {{ $message }}
+                                </div>
+                                @enderror
+                            </div>
+                            @endif
                             <div class="d-grid gap-2 d-md-flex justify-content-md-start">
                                 <button class="btn btn-primary" type="submit">Simpan</button>
                             </div>

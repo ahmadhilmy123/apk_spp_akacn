@@ -2,13 +2,19 @@
 
 use App\Models\BukuTamu;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{
+
+use App\Http\Controllers\Kelola\{
+    PembayaranController as KelolaPembayaranController,
     RoleController,
     UserController,
     TahunAjaranController,
     ProdiController,
     SemesterController,
     BiayaController
+};
+
+use App\Http\Controllers\{
+    PembayaranController
 };
 
 /*
@@ -74,6 +80,36 @@ Route::group(['middleware' => ['auth']], function() {
                 });
             });
 
+        });
+
+    });
+    
+    Route::prefix('kelola')->name('kelola.')->group(function () {
+        Route::prefix('pembayaran')->name('pembayaran.')->group(function () {
+            Route::get('/', [KelolaPembayaranController::class, 'index'])->name('index');
+            Route::get('/data', [KelolaPembayaranController::class, 'data'])->name('data');
+            Route::get('/{pembayaran_id}', [KelolaPembayaranController::class, 'show'])->name('show');
+            Route::post('/{pembayaran_id}', [KelolaPembayaranController::class, 'store'])->name('store');
+            Route::get('/{pembayaran_id}/revisi', [KelolaPembayaranController::class, 'revisi'])->name('revisi');
+        });
+    });
+    
+    Route::middleware(['role:mahasiswa'])->group(function () {
+        Route::prefix('pembayaran')->name('pembayaran.')->group(function () {
+            Route::get('data', [PembayaranController::class, 'data'])->name('data');
+            Route::get('/', [PembayaranController::class, 'index'])->name('index');
+            Route::middleware(['pembayaran.semester'])->group(function () {
+                Route::get('{semester_id}/data', [PembayaranController::class, 'dataPembayaran'])->name('dataPembayaran');
+                Route::get('{semester_id}', [PembayaranController::class, 'show'])->name('show');
+                Route::get('{semester_id}/create', [PembayaranController::class, 'create'])->name('create');
+                Route::post('{semester_id}', [PembayaranController::class, 'store'])->name('store');
+                Route::get('{semester_id}/{pembayaran_id}', [PembayaranController::class, 'showPembayaran'])->name('showPembayaran');
+                Route::get('{semester_id}/{pembayaran_id}/edit', [PembayaranController::class, 'edit'])->name('edit');
+                Route::patch('{semester_id}/{pembayaran_id}', [PembayaranController::class, 'update'])->name('update');
+                Route::delete('{semester_id}/{pembayaran_id}', [PembayaranController::class, 'destroy'])->name('destroy');
+                Route::get('{semester_id}/{pembayaran_id}/revisi', [PembayaranController::class, 'revisi'])->name('revisi');
+                Route::patch('{semester_id}/{pembayaran_id}/revisi', [PembayaranController::class, 'storeRevisi'])->name('storeRevisi');
+            });
         });
     });
 });

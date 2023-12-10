@@ -1,7 +1,7 @@
 <?php
+namespace App\Http\Controllers\Kelola;
 
-namespace App\Http\Controllers;
-
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use DB;
 use Illuminate\Http\Request;

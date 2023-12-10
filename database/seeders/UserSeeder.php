@@ -28,10 +28,8 @@ class UserSeeder extends Seeder
             'name' => 'admin',
             'guard_name' => 'web'
         ]);
-
-        $permissions = Permission::pluck('id','id')->all();
    
-        $role->syncPermissions($permissions);
+        $role->syncPermissions([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,25,26]);
 
         $admin->assignRole([$role->id]);
 
@@ -47,24 +45,16 @@ class UserSeeder extends Seeder
             'guard_name' => 'web'
         ]);
    
-        $role_petugas->syncPermissions([]);
+        $role_petugas->syncPermissions([25,26]);
 
         $petugas->assignRole([$role_petugas->id]);
 
         // User mahasiswa
-        $mahasiswa = User::create([
-            'name' => 'Mahasiswa',
-            'email' => 'mahasiswa@gmail.com',
-            'password' => bcrypt('000000'),
-        ]);
-
         $role_mhs = Role::create([
             'name' => 'mahasiswa',
             'guard_name' => 'web'
         ]);
    
-        $role_mhs->syncPermissions([]);
-
-        $mahasiswa->assignRole([$role_mhs->id]);
+        $role_mhs->syncPermissions([27,28,29,30]);
     }
 }

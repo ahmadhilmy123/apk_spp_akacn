@@ -23,7 +23,7 @@
         @can('view_tahun_ajaran')
         <li class="menu-item {{ Request::is('data-master*') ? 'active' : '' }}">
             <a href="javascript:void(0);" class="menu-link menu-toggle">
-                <i class="menu-icon tf-icons bx bx-user"></i>
+                <i class="menu-icon tf-icons bx bx-archive"></i>
                 <div data-i18n="Layouts">Data Master</div>
             </a>
     
@@ -62,11 +62,28 @@
         @endcan
 
         @can('view_roles')
-        {{-- Roles --}}
         <li class="menu-item {{ Request::is('roles*') ? 'active' : '' }}">
             <a href="{{ route('roles.index') }}" class="menu-link">
                 <i class="menu-icon tf-icons bx bx-lock-open-alt"></i>
                 <div data-i18n="Analytics">Roles</div>
+            </a>
+        </li>
+        @endcan
+
+        @can('view_kelola_pembayaran')
+        <li class="menu-item {{ Request::is('kelola/pembayaran*') ? 'active' : '' }}">
+            <a href="{{ route('kelola.pembayaran.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-file"></i>
+                <div data-i18n="Analytics">Pembayaran</div>
+            </a>
+        </li>
+        @endcan
+
+        @can('view_pembayaran')
+        <li class="menu-item {{ Request::is('pembayaran*') ? 'active' : '' }}">
+            <a href="{{ route('pembayaran.index') }}" class="menu-link">
+                <i class="menu-icon tf-icons bx bx-file"></i>
+                <div data-i18n="Analytics">Pembayaran</div>
             </a>
         </li>
         @endcan

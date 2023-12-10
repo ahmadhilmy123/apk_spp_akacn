@@ -1,7 +1,7 @@
 <?php
+namespace App\Http\Controllers\Kelola;
 
-namespace App\Http\Controllers;
-
+use App\Http\Controllers\Controller;
 use DataTables;
 use App\Models\Prodi;
 use Illuminate\Http\Request;
@@ -30,8 +30,8 @@ class ProdiController extends Controller
                                         Hapus
                                     </button>";
 
-                $data->options = $options;
-            }
+                                }
+                                $data->options = $options;
         }
 
         return DataTables::of($datas)

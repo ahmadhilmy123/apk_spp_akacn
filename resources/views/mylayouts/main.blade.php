@@ -82,7 +82,8 @@
             overflow-x: none;
         }
 
-        #summernote, .note-editor .note-dropzone {
+        #summernote,
+        .note-editor .note-dropzone {
             z-index: 9999 !important;
         }
 
@@ -113,19 +114,6 @@
                 <!-- Content wrapper -->
                 @yield('container')
                 <!-- Content wrapper -->
-                <footer class="content-footer footer bg-footer-theme">
-                    <div class="container-xxl d-flex flex-wrap justify-content-end py-2 flex-md-row flex-column">
-                        <div class="col-md-5 d-flex align-items-center div-col-footer" style="gap: .5rem;">
-                            {{-- <img src="/img/logoStarbhakForApp.png" alt="" style="width: 1.7rem;">
-                            <h6 class="m-0">SMK TARUNA BHAKTI</h6> --}}
-                        </div>
-                        <div class="col-md-2"></div>
-                        <div class="col-md-5">
-                            <h5 class="text-end text-powered" style="font-size: 1rem;">Proudly powered by <a
-                                    href="https://github.com/CodingRafi" target="_blank">CodingRafi</a></h5>
-                        </div>
-                    </div>
-                </footer>
             </div>
             <!-- / Layout page -->
         </div>
@@ -134,6 +122,10 @@
         <div class="layout-overlay layout-menu-toggle"></div>
     </div>
 
+    <form action="" class="form-delete" method="POST">
+        @csrf
+        @method('delete')
+    </form>
     <!-- / Layout wrapper -->
 
     <!-- Core JS -->
@@ -198,8 +190,26 @@
         @endif
     </script>
 
-<script>
-    const upload_file = (blobInfo, progress) => new Promise((resolve, reject) => {
+    <script>
+        function deleteData(url){
+        Swal.fire({
+            title: 'Apakah anda yakin ingin hapus data ini?',
+            text: "Data yang terhapus tidak dapat dikembalikan",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $('.form-delete').attr('action', url).submit();
+            } 
+        })
+    }
+    </script>
+    <script>
+        const upload_file = (blobInfo, progress) => new Promise((resolve, reject) => {
         const xhr = new XMLHttpRequest();
         xhr.withCredentials = false;
         xhr.open('POST', '{{ route("upload_file") }}');
@@ -299,7 +309,7 @@
      `
      
    });
-</script>
+    </script>
 
     @stack('js')
 

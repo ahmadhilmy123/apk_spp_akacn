@@ -9,6 +9,8 @@ use App\Models\{
 use Illuminate\Support\Facades\Storage; 
 use Illuminate\Http\Request;
 use Auth, DB, DataTables;
+use App\Exports\PembayaranMhsExport;
+use Maatwebsite\Excel\Facades\Excel;
 
 class PembayaranController extends Controller
 {
@@ -289,5 +291,9 @@ class PembayaranController extends Controller
 
         return redirect()->route('pembayaran.show', ['semester_id' => $semester_id])
                     ->with('success', 'Pembayaran berhasil direvisi');
+    }
+
+    public function export(){
+        return Excel::download(new PembayaranMhsExport, 'pembayaran.xlsx');
     }
 }

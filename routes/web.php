@@ -105,6 +105,7 @@ Route::group(['middleware' => ['auth']], function() {
     Route::middleware(['role:mahasiswa'])->group(function () {
         Route::prefix('pembayaran')->name('pembayaran.')->group(function () {
             Route::get('data', [PembayaranController::class, 'data'])->name('data');
+            Route::get('export', [PembayaranController::class, 'export'])->name('export');
             Route::get('/', [PembayaranController::class, 'index'])->name('index');
             Route::middleware(['pembayaran.semester'])->group(function () {
                 Route::get('{semester_id}/data', [PembayaranController::class, 'dataPembayaran'])->name('dataPembayaran');

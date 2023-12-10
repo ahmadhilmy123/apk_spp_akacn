@@ -21,10 +21,16 @@ $revisi = isset($revisi) ? $revisi : false;
                     <div class="card mb-4">
                         <div class="card-header">
                             <div class="d-flex justify-content-between align-items-center ">
-                                <h5 class="text-capitalize">Pembayaran {{ $semester->prodi->nama }} | {{
-                                    $semester->nama }}</h5>
-                                @if (isset($data) && $data->status != 'pengajuan' && $data->revisi == '1' && $page != 'form')
-                                <a href="{{ route('pembayaran.revisi', ['semester_id' => $semester->id, 'pembayaran_id' => $data->id]) }}" class="btn btn-warning" onclick="return confirm('Apakah anda yakin?')">Revisi</a>
+                                <div class="d-flex align-items-center">
+                                    <a href="{{ route('pembayaran.show', $semester->id) }}"><i
+                                            class="menu-icon tf-icons bx bx-chevron-left"></i></a>
+                                    <h5 class="text-capitalize mb-0">Pembayaran {{ $semester->prodi->nama }} | {{
+                                        $semester->nama }}</h5>
+                                </div>
+                                @if (isset($data) && $data->status != 'pengajuan' && $data->revisi == '1' && $page !=
+                                'form')
+                                <a href="{{ route('pembayaran.revisi', ['semester_id' => $semester->id, 'pembayaran_id' => $data->id]) }}"
+                                    class="btn btn-warning" onclick="return confirm('Apakah anda yakin?')">Revisi</a>
                                 @endif
                             </div>
                         </div>

@@ -4,8 +4,9 @@
 <div class="content-wrapper">
     <div class="container-xxl flex-grow-1 container-p-y">
         <div class="card">
-            <div class="card-header d-flex justify-content-between align-items-center">
-                <h5 class="text-capitalize">Biaya {{ $prodi->nama }} | {{ $data->nama }}</h5>
+            <div class="card-header d-flex align-items-center">
+                <a href="{{ route('data-master.prodi.show', $prodi->id) }}"><i class="menu-icon tf-icons bx bx-chevron-left"></i></a>
+                <h5 class="text-capitalize mb-0">Biaya {{ $prodi->nama }} | {{ $data->nama }}</h5>
             </div>
             <div class="card-body">
                 <a href="{{ route('data-master.prodi.semester.biaya.create', ['prodi_id' => $prodi->id, 'semester_id' => $data->id]) }}" class="btn btn-primary mb-3">Tambah</a>

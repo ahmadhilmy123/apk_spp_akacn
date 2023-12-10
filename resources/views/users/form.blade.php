@@ -16,8 +16,12 @@
                 <div class="col-xl-12">
                     <!-- HTML5 Inputs -->
                     <div class="card mb-4">
-                        <h5 class="card-header text-capitalize">{{ isset($data) ? 'Edit' : 'Tambah' }} {{
-                            request('role') }}</h5>
+                        <div class="card-header d-flex align-items-center">
+                            <a href="{{ route('users.index', request('role')) }}"><i
+                                    class="menu-icon tf-icons bx bx-chevron-left"></i></a>
+                            <h5 class="text-capitalize mb-0">{{ isset($data) ? 'Edit' : 'Tambah' }} {{
+                                request('role') }}</h5>
+                        </div>
                         <div class="card-body">
                             <div class="mb-3">
                                 <label for="name" class="form-label">Nama</label>
@@ -66,8 +70,7 @@
                             </div>
                             <div class="mb-3">
                                 <label for="prodi_id" class="form-label">Prodi</label>
-                                <select class="form-select @error('prodi_id') is-invalid @enderror"
-                                    name="prodi_id">
+                                <select class="form-select @error('prodi_id') is-invalid @enderror" name="prodi_id">
                                     <option value="">Pilih Prodi</option>
                                     @foreach ($prodis as $prodi)
                                     <option value="{{ $prodi->id }}">{{ $prodi->nama }}</option>

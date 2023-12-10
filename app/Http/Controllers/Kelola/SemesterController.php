@@ -14,7 +14,7 @@ class SemesterController extends Controller
 {
     public function data($prodi_id){
         $datas = Semester::where('prodi_id', $prodi_id)->get();
-
+        
         foreach ($datas as $data) {
                 $options = '';
 

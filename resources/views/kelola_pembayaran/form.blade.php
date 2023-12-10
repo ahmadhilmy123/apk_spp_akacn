@@ -7,7 +7,11 @@
             <div class="col-xl-12">
                 <!-- HTML5 Inputs -->
                 <div class="card mb-4">
-                    <h5 class="card-header text-capitalize">Detail Pembayaran</h5>
+                    <div class="card-header d-flex align-items-center">
+                        <a href="{{ route('kelola.pembayaran.index') }}"><i
+                                class="menu-icon tf-icons bx bx-chevron-left"></i></a>
+                        <h5 class="text-capitalize mb-0">Detail Pembayaran</h5>
+                    </div>
                     <div class="card-body">
                         @if ($data->status != 'pengajuan')
                         @if ($data->status == 'diterima')

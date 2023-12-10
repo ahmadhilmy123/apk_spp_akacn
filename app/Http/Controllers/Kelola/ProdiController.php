@@ -2,7 +2,7 @@
 namespace App\Http\Controllers\Kelola;
 
 use App\Http\Controllers\Controller;
-use DataTables;
+use DataTables, DB;
 use App\Models\Prodi;
 use Illuminate\Http\Request;
 
@@ -72,6 +72,14 @@ class ProdiController extends Controller
 
     public function destroy(Prodi $prodi)
     {
-        //
+        DB::beginTransaction();
+        try {
+            $prodi->delete();
+            DB::commit();
+            return redirect()->back()->with('success', 'Berhasil dihapus');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', 'Gagal dihapus');
+        }
     }
 }

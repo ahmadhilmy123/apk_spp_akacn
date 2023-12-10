@@ -59,10 +59,10 @@
           <div class="card">
             <div class="card-body">
               <div class="container-fluid p-0 d-flex justify-content-center">
-                <img src="/img/logoStarbhakForApp.png" alt="" style="width: 5rem;" class="mb-2">
+                <img src="{{ asset('image/logo.png') }}" alt="" style="width: 5rem;" class="mb-2">
               </div>
               
-              <h4 class="mb-2 text-center">Welcome to SMK Taruna Bhakti!</h4>
+              <h4 class="mb-2 text-center">Welcome to AKACN</h4>
               <p class="mb-2 text-center">Please sign-in to your account</p>
 
               <form id="formAuthentication" class="mb-3" action="{{ route('login') }}" method="POST">

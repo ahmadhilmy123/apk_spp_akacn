@@ -32,10 +32,10 @@
                             </div>
                             <div class="mb-3">
                                 <label for="email" class="form-label">{{ (request('role') ==
-                                    'petugas' ? 'NIP' : 'NIS') }}</label>
+                                    'petugas' ? 'NIP' : 'NIM') }}</label>
                                 <input class="form-control @error('email') is-invalid @enderror" type="text"
                                     value="{{ isset($data) ? $data->email : old('email') }}" id="email"
-                                    placeholder="{{ (request('role') == 'petugas' ? 'NIP' : 'NIS') }}" name="email" />
+                                    placeholder="{{ (request('role') == 'petugas' ? 'NIP' : 'NIM') }}" name="email" />
                                 @error('email')
                                 <div class="invalid-feedback d-block">
                                     {{ $message }}

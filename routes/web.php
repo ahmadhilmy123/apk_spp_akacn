@@ -14,7 +14,8 @@ use App\Http\Controllers\Kelola\{
 };
 
 use App\Http\Controllers\{
-    PembayaranController
+    PembayaranController,
+    HomeController
 };
 
 /*
@@ -46,7 +47,8 @@ Route::group(['middleware' => ['auth']], function() {
         Route::patch('{role}/{id}', [UserController::class, 'update'])->name('update');
         Route::delete('{role}/{id}', [UserController::class, 'destroy'])->name('destroy');
     });
-    Route::post('/upload-file', [UserController::class, 'upload_file'])->name('upload_file');
+    
+    Route::post('/upload-file', [HomeController::class, 'upload_file'])->name('upload_file');
 
     Route::prefix('data-master')->name('data-master.')->group(function () {
         //? Tahun ajaran
@@ -79,7 +81,6 @@ Route::group(['middleware' => ['auth']], function() {
                     Route::delete('{prodi_id}/semester/{semester_id}/biaya/{tahun_ajaran_id}', [BiayaController::class, 'destroy'])->name('destroy');
                 });
             });
-
         });
 
     });
@@ -88,6 +89,7 @@ Route::group(['middleware' => ['auth']], function() {
         Route::prefix('pembayaran')->name('pembayaran.')->group(function () {
             Route::get('/', [KelolaPembayaranController::class, 'index'])->name('index');
             Route::get('/data', [KelolaPembayaranController::class, 'data'])->name('data');
+            Route::get('/export', [KelolaPembayaranController::class, 'export'])->name('export');
             Route::get('/{pembayaran_id}', [KelolaPembayaranController::class, 'show'])->name('show');
             Route::post('/{pembayaran_id}', [KelolaPembayaranController::class, 'store'])->name('store');
             Route::get('/{pembayaran_id}/revisi', [KelolaPembayaranController::class, 'revisi'])->name('revisi');

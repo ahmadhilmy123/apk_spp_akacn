@@ -100,8 +100,21 @@ class SemesterController extends Controller
      * @param  \App\Models\Semester  $semester
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Semester $semester)
+    public function destroy($prodi_id, $semester_id)
     {
-        //
+        $data = Semester::findOrFail($semester_id);
+        if ($data->prodi_id != $prodi_id) {
+            abort(403);
+        }
+
+        DB::beginTransaction();
+        try {
+            $data->delete();
+            DB::commit();
+            return redirect()->back()->with('success', 'Berhasil dihapus');
+        } catch (\Exception $e) {
+            DB::rollBack();
+            return redirect()->back()->with('error', 'Gagal dihapus');
+        }
     }
 }

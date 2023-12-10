@@ -20,7 +20,7 @@ $data = $semester->tahun_ajaran()->where('tahun_ajaran_id', $mhs->tahun_ajaran_i
                     <h5>Detail Pembayaran</h5>
                     <p>Biaya: <strong>{{ formatRupiah($data->pivot->nominal) }}</strong></p>
                     <p>Sudah dibayar: <strong>{{ formatRupiah($sudah_dibayar) }}</strong></p>
-                    {!! $data->ket !!}
+                    {!! $data->pivot->ket !!}
                 </div>
                 <hr>
                 @else

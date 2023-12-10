@@ -21,7 +21,7 @@ return new class extends Migration
             $table->date('tgl_bayar');
             $table->string('nominal');
             $table->string('bukti');
-            $table->enum('status', ['pending','diterima', 'ditolak']);
+            $table->enum('status', ['pengajuan','diterima', 'ditolak']);
             $table->enum('revisi', ['0', '1'])->default('0');
             $table->string('ket_mhs')->nullable();
             $table->string('ket_verify')->nullable();

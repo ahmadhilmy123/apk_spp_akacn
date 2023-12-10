@@ -84,4 +84,8 @@ class BiayaController extends Controller
         return redirect()->route('data-master.prodi.semester.show', ['prodi_id' => $prodi_id, 'semester_id' => $semester_id])
                 ->with('success', 'Berhasil disimpan');
     }
+
+    public function edit($prodi_id, $semester_id, $biaya_id){
+        
+    }
 }

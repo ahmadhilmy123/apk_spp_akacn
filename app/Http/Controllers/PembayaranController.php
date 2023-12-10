@@ -144,7 +144,7 @@ class PembayaranController extends Controller
             'bukti' => $bukti,
             'mhs_id' => Auth::user()->id,
             'semester_id' => $semester_id,
-            'status' => 'pending',
+            'status' => 'pengajuan',
             'ket_mhs' => $request->ket_mhs,
             'prodi_id' => $data->pivot->prodi_id
         ]);
@@ -187,7 +187,7 @@ class PembayaranController extends Controller
             return redirect()->back()->with('error', 'Maaf telah terjadi kesalahan');
         }
         
-        if ($data->status != 'pending' || $data->verify_id) {
+        if ($data->status != 'pengajuan' || $data->verify_id) {
             return redirect()->back()->with('error', 'Tidak dapat diedit');
         }
 
@@ -204,7 +204,7 @@ class PembayaranController extends Controller
             return redirect()->back()->with('error', 'Maaf telah terjadi kesalahan');
         }
         
-        if ($data->status != 'pending' || $data->verify_id) {
+        if ($data->status != 'pengajuan' || $data->verify_id) {
             return redirect()->back()->with('error', 'Tidak dapat diedit');
         }
 
@@ -238,7 +238,7 @@ class PembayaranController extends Controller
             return redirect()->back()->with('error', 'Maaf telah terjadi kesalahan');
         }
         
-        if ($pembayaran->status != 'pending' || $pembayaran->verify_id) {
+        if ($pembayaran->status != 'pengajuan' || $pembayaran->verify_id) {
             return redirect()->back()->with('error', 'Tidak dapat dihapus');
         }
 
@@ -251,7 +251,7 @@ class PembayaranController extends Controller
     public function revisi($semester_id, $pembayaran_id){
         $data = Pembayaran::findOrFail($pembayaran_id);
 
-        if ($data->mhs_id != Auth::user()->id || $data->semester_id != $semester_id || $data->status == 'pending') {
+        if ($data->mhs_id != Auth::user()->id || $data->semester_id != $semester_id || $data->status == 'pengajuan') {
             return redirect()->back()->with('error', 'Maaf telah terjadi kesalahan');
         }
 
@@ -264,7 +264,7 @@ class PembayaranController extends Controller
     public function storeRevisi(Request $request, $semester_id, $pembayaran_id){
         $data = Pembayaran::findOrFail($pembayaran_id);
 
-        if ($data->mhs_id != Auth::user()->id || $data->semester_id != $semester_id || $data->status == 'pending') {
+        if ($data->mhs_id != Auth::user()->id || $data->semester_id != $semester_id || $data->status == 'pengajuan') {
             return redirect()->back()->with('error', 'Maaf telah terjadi kesalahan');
         }
 
@@ -284,7 +284,7 @@ class PembayaranController extends Controller
             'nominal' => $request->nominal,
             'bukti' => isset($bukti) ? $bukti : $data->bukti,
             'ket_mhs' => $request->ket_mhs,
-            'status' => 'pending'
+            'status' => 'pengajuan'
         ]);
 
         return redirect()->route('pembayaran.show', ['semester_id' => $semester_id])

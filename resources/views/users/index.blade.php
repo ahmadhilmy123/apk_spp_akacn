@@ -3,7 +3,7 @@
 @section('container')
 <div class="content-wrapper">
     <div class="container-xxl flex-grow-1 container-p-y">
-        <div class="card" style="min-height: 65vh;">
+        <div class="card">
             <div class="card-header d-flex justify-content-between align-items-center">
                 <h5 class="text-capitalize">{{ request('role') }}</h5>
                 @can('add_users')
@@ -19,7 +19,7 @@
                             @if (request('role') == 'petugas')
                             <th>NIP</th>
                             @else
-                            <th>NIS</th>
+                            <th>NIM</th>
                             @endif
                             @can('edit_users', 'delete_users')
                             <th>Actions</th>

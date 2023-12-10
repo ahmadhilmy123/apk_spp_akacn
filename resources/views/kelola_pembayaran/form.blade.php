@@ -9,7 +9,7 @@
                 <div class="card mb-4">
                     <h5 class="card-header text-capitalize">Detail Pembayaran</h5>
                     <div class="card-body">
-                        @if ($data->status != 'pending')
+                        @if ($data->status != 'pengajuan')
                         @if ($data->status == 'diterima')
                         <div class="alert alert-primary" role="alert">
                             Pembayaran ini telah diterima
@@ -46,7 +46,7 @@
                             </div>
                         </div>
                         <hr>
-                        @if ($data->status == 'pending')
+                        @if ($data->status == 'pengajuan')
                         <form action="{{ route('kelola.pembayaran.store', $data->id) }}" class="form-verify"
                             method="post">
                             @csrf

@@ -16,15 +16,15 @@ return new class extends Migration
         Schema::create('semesters', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->foreignId('prodi_id')->contrained('prodi');
+            $table->foreignId('prodi_id')->constrained('prodi');
             $table->timestamps();
         });
 
         Schema::create('semester_tahun', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('prodi_id')->contrained('prodi');
-            $table->foreignId('semester_id')->contrained('semesters');
-            $table->foreignId('tahun_ajaran_id')->contrained('tahun_ajaran_id');
+            $table->foreignId('prodi_id')->constrained('prodi');
+            $table->foreignId('semester_id')->constrained('semesters');
+            $table->foreignId('tahun_ajaran_id')->constrained('tahun_ajarans');
             $table->text('ket')->nullable();
             $table->string('nominal');
             $table->enum('publish', ['0', '1'])->default(0);

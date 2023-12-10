@@ -23,14 +23,14 @@ $revisi = isset($revisi) ? $revisi : false;
                             <div class="d-flex justify-content-between align-items-center ">
                                 <h5 class="text-capitalize">Pembayaran {{ $semester->prodi->nama }} | {{
                                     $semester->nama }}</h5>
-                                @if (isset($data) && $data->status != 'pending' && $data->revisi == '1' && $page != 'form')
+                                @if (isset($data) && $data->status != 'pengajuan' && $data->revisi == '1' && $page != 'form')
                                 <a href="{{ route('pembayaran.revisi', ['semester_id' => $semester->id, 'pembayaran_id' => $data->id]) }}" class="btn btn-warning" onclick="return confirm('Apakah anda yakin?')">Revisi</a>
                                 @endif
                             </div>
                         </div>
                         <div class="card-body">
                             @if (isset($data))
-                            @if ($data->status != 'pending' && $page != 'form')
+                            @if ($data->status != 'pengajuan' && $page != 'form')
                             @if ($data->status == 'diterima')
                             <div class="alert alert-primary" role="alert">
                                 Pembayaran ini telah diterima

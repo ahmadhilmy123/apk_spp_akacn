@@ -11,4 +11,8 @@ class Prodi extends Model
     
     protected $guarded = ['id'];
     protected $table = 'prodi';
+
+    public function semester(){
+        return $this->hasMany(Semester::class, 'prodi_id');
+    }
 }

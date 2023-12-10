@@ -77,8 +77,8 @@ class UserController extends Controller
         }
 
         $request->validate($validate, [
-            'email.required' => ($role == 'petugas' ? 'The NIP field is required.' : 'The NIS field is required.'),
-            'email.unique' => ($role == 'petugas' ? 'The NIP is already in use.' : 'The NIS is already in use.'),
+            'email.required' => ($role == 'petugas' ? 'The NIP field is required.' : 'The NIM field is required.'),
+            'email.unique' => ($role == 'petugas' ? 'The NIP is already in use.' : 'The NIM is already in use.'),
             'name.required' => 'The nama field is required.'
         ]);
 
@@ -111,8 +111,8 @@ class UserController extends Controller
             'email' => 'required|unique:users,email,' . $id,
             'name' => 'required',
         ], [
-            'email.required' => ($role == 'petugas' ? 'The NIP field is required.' : 'The NIS field is required.'),
-            'email.unique' => ($role == 'petugas' ? 'The NIP is already in use.' : 'The NIS is already in use.'),
+            'email.required' => ($role == 'petugas' ? 'The NIP field is required.' : 'The NIM field is required.'),
+            'email.unique' => ($role == 'petugas' ? 'The NIP is already in use.' : 'The NIM is already in use.'),
             'name.required' => 'The nama field is required.'
         ]);
 

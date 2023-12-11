@@ -74,7 +74,7 @@
                         { "data": "prodi" },
                         { "data": "status" },
                         { "data": "verify_id" },
-                        @can('edit_users', 'hapus_users')
+                        @can('edit_kelola_pembayaran')
                             { "data": "options" }
                         @endcan
                     ],

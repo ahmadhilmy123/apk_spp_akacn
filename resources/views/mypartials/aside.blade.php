@@ -12,6 +12,8 @@
     <div class="menu-inner-shadow"></div>
 
     <ul class="menu-inner py-1" style="overflow-y: auto;overflow-x: hidden">
+    
+        @can('view_kelola_pembayaran')
         <!-- Dashboard -->
         <li class="menu-item {{ Request::is('dashboard') ? 'active' : '' }}">
             <a href="/dashboard" class="menu-link">
@@ -19,6 +21,7 @@
                 <div data-i18n="Analytics">Dashboard</div>
             </a>
         </li>
+        @endcan
 
         @can('view_tahun_ajaran')
         <li class="menu-item {{ Request::is('data-master*') ? 'active' : '' }}">

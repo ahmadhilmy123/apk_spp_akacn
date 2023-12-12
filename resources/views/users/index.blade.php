@@ -11,22 +11,24 @@
                 @endcan
             </div>
             <div class="card-body">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Name User</th>
-                            @if (request('role') == 'petugas')
-                            <th>NIP</th>
-                            @else
-                            <th>NIM</th>
-                            @endif
-                            @can('edit_users', 'delete_users')
-                            <th>Actions</th>
-                            @endcan
-                        </tr>
-                    </thead>
-                </table>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Name User</th>
+                                @if (request('role') == 'petugas')
+                                <th>NIP</th>
+                                @else
+                                <th>NIM</th>
+                                @endif
+                                @can('edit_users', 'delete_users')
+                                <th>Actions</th>
+                                @endcan
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

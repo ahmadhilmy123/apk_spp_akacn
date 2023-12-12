@@ -10,19 +10,21 @@
             </div>
             <div class="card-body">
                 <a href="{{ route('data-master.prodi.semester.biaya.create', ['prodi_id' => $prodi->id, 'semester_id' => $data->id]) }}" class="btn btn-primary mb-3">Tambah</a>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Tahun Ajaran</th>
-                            <th>Nominal</th>
-                            <th>Publish</th>
-                            @can('edit_biaya', 'delete_biaya')
-                            <th>Actions</th>
-                            @endcan
-                        </tr>
-                    </thead>
-                </table>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Tahun Ajaran</th>
+                                <th>Nominal</th>
+                                <th>Publish</th>
+                                @can('edit_biaya', 'delete_biaya')
+                                <th>Actions</th>
+                                @endcan
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

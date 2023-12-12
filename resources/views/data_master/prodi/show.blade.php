@@ -13,17 +13,19 @@
                     <h5>Semester</h5>
                     <a href="{{ route('data-master.prodi.semester.create', $prodi->id) }}" class="btn btn-primary">Tambah Semester</a>
                 </div>
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Nama</th>
-                            @can('edit_semester', 'delete_semester')
-                            <th>Actions</th>
-                            @endcan
-                        </tr>
-                    </thead>
-                </table>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama</th>
+                                @can('edit_semester', 'delete_semester')
+                                <th>Actions</th>
+                                @endcan
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

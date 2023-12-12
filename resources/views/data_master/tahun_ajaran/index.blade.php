@@ -11,17 +11,19 @@
                 @endcan
             </div>
             <div class="card-body">
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Nama</th>
-                            @can('edit_tahun_ajaran', 'delete_tahun_ajaran')
-                            <th>Actions</th>
-                            @endcan
-                        </tr>
-                    </thead>
-                </table>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama</th>
+                                @can('edit_tahun_ajaran', 'delete_tahun_ajaran')
+                                <th>Actions</th>
+                                @endcan
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

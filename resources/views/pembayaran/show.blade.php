@@ -32,18 +32,20 @@ $data = $semester->tahun_ajaran()->where('tahun_ajaran_id', $mhs->tahun_ajaran_i
                     Maaf belum ada pembayaran
                 </div>
                 @endif
-                <table class="table">
-                    <thead>
-                        <tr>
-                            <th>No</th>
-                            <th>Nominal</th>
-                            <th>Tanggal Bayar</th>
-                            <th>Bukti</th>
-                            <th>Status</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
-                </table>
+                <div class="table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nominal</th>
+                                <th>Tanggal Bayar</th>
+                                <th>Bukti</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                    </table>
+                </div>
             </div>
         </div>
     </div>

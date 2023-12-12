@@ -105,9 +105,19 @@
         if (status == 'diterima') {
             $('.form-verify').submit();
         }else{
-            let revisi = confirm('Apakah boleh direvisi?');
-            $('input[name=revisi]').val(revisi);
-            $('.form-verify').submit();
+            Swal.fire({
+                title: 'Apakah mahasiswa boleh revisi?',
+                text: 'Klik "Ya" jika boleh, klik "Tidak" jika tidak boleh',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Tidak'
+            }).then((result) => {
+                $('input[name=revisi]').val(result.isConfirmed);
+                $('.form-verify').submit();
+            })
         }
     })
 </script>

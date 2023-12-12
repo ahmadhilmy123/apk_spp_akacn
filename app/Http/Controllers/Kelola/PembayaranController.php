@@ -83,7 +83,7 @@ class PembayaranController extends Controller
             'ket_verify' => $request->ket_verify,
             'status' => $request->status,
             'verify_id' => Auth::user()->id,
-            'revisi' => $request->revisi ? "1" : "0"
+            'revisi' => $request->revisi == 'true' ? "1" : "0"
         ]);
 
         return redirect()->route('kelola.pembayaran.index')->with('success', 'Berhasil disimpan!');

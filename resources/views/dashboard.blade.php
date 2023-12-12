@@ -57,20 +57,26 @@
 
             <div class="card" style="border-top: 10px solid #1E88D7;">
                 <div class="card-body">
-                    <form action="" class="d-flex mb-3" style="gap: 1rem">
-                        <select class="form-select" id="filter-prodi" style="width: 20rem;" name="prodi">
-                            <option value="" selected>Pilih Prodi</option>
-                            @foreach ($prodis as $prodi)
-                            <option value="{{ $prodi->id }}">{{ $prodi->nama }}</option>
-                            @endforeach
-                        </select>
-                        <select class="form-select" id="filter-tahun-ajaran" style="width: 20rem;" name="tahun_ajaran">
-                            <option value="" selected>Pilih Tahun Ajaran</option>
-                            @foreach ($tahun_ajarans as $tahun_ajaran)
-                            <option value="{{ $tahun_ajaran->id }}">{{ $tahun_ajaran->nama }}</option>
-                            @endforeach
-                        </select>
-                        <button type="submit" class="btn btn-primary">Search</button>
+                    <form action="" class="row">
+                        <div class="col-md-3 mb-3">
+                            <select class="form-select" id="filter-prodi" name="prodi">
+                                <option value="" selected>Pilih Prodi</option>
+                                @foreach ($prodis as $prodi)
+                                <option value="{{ $prodi->id }}">{{ $prodi->nama }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-3 mb-3">
+                            <select class="form-select" id="filter-tahun-ajaran" name="tahun_ajaran">
+                                <option value="" selected>Pilih Tahun Ajaran</option>
+                                @foreach ($tahun_ajarans as $tahun_ajaran)
+                                <option value="{{ $tahun_ajaran->id }}">{{ $tahun_ajaran->nama }}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="col-md-2 mb-3">
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </div>
                     </form>
                     <div id="container-pembayaran"></div>
                 </div>

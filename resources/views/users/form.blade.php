@@ -59,7 +59,7 @@
                                     name="tahun_ajaran_id">
                                     <option value="">Pilih Tahun Ajaran</option>
                                     @foreach ($tahun_ajarans as $tahun_ajaran)
-                                    <option value="{{ $tahun_ajaran->id }}">{{ $tahun_ajaran->nama }}</option>
+                                    <option value="{{ $tahun_ajaran->id }}" {{ isset($data) ? ($data->mahasiswa->tahun_ajaran_id == $tahun_ajaran->id ? 'selected' : '') : '' }}>{{ $tahun_ajaran->nama }}</option>
                                     @endforeach
                                 </select>
                                 @error('tahun_ajaran_id')
@@ -73,7 +73,7 @@
                                 <select class="form-select @error('prodi_id') is-invalid @enderror" name="prodi_id">
                                     <option value="">Pilih Prodi</option>
                                     @foreach ($prodis as $prodi)
-                                    <option value="{{ $prodi->id }}">{{ $prodi->nama }}</option>
+                                    <option value="{{ $prodi->id }}" {{ isset($data) ? ($data->mahasiswa->prodi_id == $prodi->id ? 'selected' : '') : '' }}>{{ $prodi->nama }}</option>
                                     @endforeach
                                 </select>
                                 @error('prodi_id')

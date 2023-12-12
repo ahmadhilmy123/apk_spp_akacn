@@ -103,7 +103,20 @@ class UserController extends Controller
 
     public function edit($role, $id){
         $data = User::findOrFail($id);
-        return view('users.form', compact('data'));
+        $return = [
+            'data' => $data
+        ];
+
+        if ($role == 'mahasiswa') {
+            $tahun_ajarans = TahunAjaran::all();
+            $prodis = Prodi::all();
+            $return += [
+                'tahun_ajarans' => $tahun_ajarans,
+                'prodis' => $prodis
+            ];
+        }
+
+        return view('users.form', $return);
     }
 
     public function update(Request $request, $role, $id){
@@ -117,10 +130,27 @@ class UserController extends Controller
         ]);
 
         $user = User::findOrFail($id);
+        if ($role == 'mahasiswa') {
+            $mhs = $user->mahasiswa;
+            if ($mhs->prodi_id != $request->prodi_id || $mhs->tahun_ajaran_id != $request->tahun_ajaran_id) {
+                $pembayarans = DB::table('pembayarans')->where('mhs_id', $id)->count();
+                if ($pembayarans > 0) {
+                    return redirect()->back()->with('error', 'Maaf tidak bisa diubah karena sudah ada pembayaran');
+                }
+            }
+        }
+
         $user->update([
             'name' => $request->name,
             'email' => $request->email,
         ]);
+
+        if ($role == 'mahasiswa') {
+            $mhs->update([
+                'prodi_id' => $request->prodi_id,
+                'tahun_ajaran_id' => $request->tahun_ajaran_id
+            ]);
+        }
         
         return redirect()->route('users.index', ['role' => $role])->with('success', 'Berhasil diubah');
     }
